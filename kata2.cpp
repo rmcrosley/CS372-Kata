@@ -13,3 +13,12 @@ int stringCalculator(const std::string & input) {
 TEST_CASE("An empty string returns zero.", "[empty]") {
 	REQUIRE(stringCalculator("") == 0);
 }
+
+TEST_CASE("single number returns a value", "[one number]") {
+    REQUIRE(stringCalculator("1") == 1);
+    REQUIRE(stringCalculator("2") == 2);
+    REQUIRE(stringCalculator("2000") == 2000);
+}
+
+
+
