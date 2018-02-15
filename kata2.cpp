@@ -8,9 +8,13 @@
 #include "catch.hpp"
 
 int stringCalculator(const std::string & input) {
-    std::istringstream s(input);
-    int value = 0;
-    s >> value;
+    std::istringstream stream(input);
+    int value;
+
+	if (input.empty())
+		return 0;
+
+    stream >> value;
     return value;
 }
 
