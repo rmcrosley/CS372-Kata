@@ -3,19 +3,30 @@
 // String Calculator Kata for CS372 from http://www.peterprovost.org/blog/2012/05/02/kata-the-only-way-to-learn-tdd/
 
 #include <string>
-#include<sstream>
+#include <sstream>
+#include <vector>
 
 #include "catch.hpp"
 
 int stringCalculator(const std::string & input) {
     std::istringstream stream(input);
-    int value;
+	std::string token;
+	int value = 0;
+	std::vector<int> values;
+	int sum = 0;
 
 	if (input.empty())
 		return 0;
 
-    stream >> value;
-    return value;
+	while (std::getline(stream, token, ',')) {
+		stream >> value;
+		values.push_back(value);
+	}
+
+	for (auto value : values)
+		sum += value;
+
+	return sum;
 }
 
 TEST_CASE("An empty string returns zero.", "[empty]") {
