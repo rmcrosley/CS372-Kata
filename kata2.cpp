@@ -9,7 +9,7 @@
 
 int stringCalculator(const std::string & input) {
     std::istringstream s(input);
-    int value;
+    int value = 0;
     s >> value;
     return value;
 }
@@ -24,5 +24,9 @@ TEST_CASE("single number returns a value", "[one number]") {
     REQUIRE(stringCalculator("2000") == 2000);
 }
 
-
+TEST_CASE("Two numbers, comma delimited, returns the sum", "[arithmetic]") {
+	REQUIRE(stringCalculator("1,2") == 3);
+	REQUIRE(stringCalculator("10,7") == 17);
+	REQUIRE(stringCalculator("42,96") == 138);
+}
 
